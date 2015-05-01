@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>React.js官方文档学习笔记 | My Book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.0.3">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="../react-router/README.html" />
+    
+    
+    <link rel="prev" href="../index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book"  data-level="1" data-basepath=".." data-revision="1430480497666">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+            
+                
+                    <a href="../reactjs/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         React.js官方文档学习笔记
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="react-router/README.html">
+            
+                
+                    <a href="../react-router/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         React-Router学习笔记
+                    </a>
+                
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >My Book</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_2044">
+                    
+                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
+<h2 id="">文件分离和离线转换</h2>
+<p>第一个HTML：</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"build/react.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"build/JSXTransformer.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"example"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/jsx"</span>&gt;</span><span class="javascript">
+      React.render(
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>,
+        document.getElementById('example')
+      );
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>为了更好的管理代码和运行代码，可将JSX代码放到单独的<code>src/helloworld.js</code>文件，使用本地工具<code>react-tools</code>转成标准的JavaScript：<code>jsx --watch src/ build/</code>。然后再在HTML中的<code>&lt;script&gt;</code>标签中引入<code>src=&quot;build/helloworld.js&quot;</code>即可。</p>
+<h2 id="">创建组件与渲染组件</h2>
+<p>第一个React组件：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> CommentBox = React.createClass({
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentBox"</span>&gt;</span>
+        Hello, world! I am a CommentBox.
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );
+  }
+});
+React.render(
+  <span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> /&gt;</span>,
+  document.getElementById('example')
+);</span>
+</code></pre>
+<p>使用<code>createClass</code>创建一个新component，其中必须要有一个<code>render()</code>函数去<code>return</code>相应的组件树（必须包含在一个<code>div</code>或者<code>span</code>里面）。</p>
+<p>另外需要做的事情是用<code>React.render()</code>实例化根组件：<code>&lt;CommentBox /&gt;</code>（注意<code>/</code>这个关闭符号，在其他的如<code>input</code>等标签中也需要关闭）,第二个是注入到原始DOM里面，也就是<code>document.getElementById()</code>（此ID为前面的第一个HTML中的<code>&lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</code>
+）</p>
+<h2 id="">组件组合与数据传递</h2>
+<p>每当创建新的子组件之后，都需要在根组件中的<code>render()</code>函数中<code>return</code>相应的组件树：</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentBox"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Comments<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentForm</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>与<code>React.render()</code>实例化跟组件一样，<code>&lt;CommentList /&gt;</code>实例化每一个子组件，在JSX中只能使用<code>className</code>，因为<code>class</code>为保留字，其他的也类似。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"comment"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentAuthor"</span>&gt;</span>
+            {this.props.author}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+            {this.props.children}
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );</span>
+</code></pre>
+<p>在<code>return</code>的组件树中通过一个属性value的方式可以在组件之间传递数据。从父节点传递到子节点的数据称为 <code>props</code>，是属性（properties）的缩写，通过<code>this.props.key</code>就可以访问到相应的<code>value</code>，通过<code>children</code>可以访问任何内嵌元素。在 JSX 中将JavaScript表达式放在大括号中，可以作为属性或者子节点，即遇到<code>&lt;</code>符号渲染HTML标签，遇到<code>{</code>识别为JS表达式。</p>
+<h2 id="">使用第三方库</h2>
+<p>首先需要在<code>&lt;head&gt;</code>中加入<code>&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js&quot;&gt;&lt;/script&gt;</code>，示例为添加<strong>Showdown</strong>处理 Markdown 文本并且转换为原始的 HTML。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> converter = <span class="hljs-keyword">new</span> Showdown.converter();
+<span class="hljs-keyword">var</span> Comment = React.createClass({
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"comment"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentAuthor"</span>&gt;</span>
+          {this.props.author}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+        {converter.makeHtml(this.props.children.toString())}
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>只需要<code>new</code>出<code>converter</code>就可以调用它的<code>makeHtml</code>方法啦，非常的灵活。</p>
+<h2 id="">数据模型</h2>
+<p>在前面我们已经提到了使用属性值的方式保存和传递数据，那如果数据来自HTML外部或者服务器呢？我们用一种模块化的方式将数据传递：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> data = [
+  {author: <span class="hljs-string">"Pete Hunt"</span>, text: <span class="hljs-string">"This is one comment"</span>},
+  {author: <span class="hljs-string">"Jordan Walke"</span>, text: <span class="hljs-string">"This is *another* comment"</span>}
+];
+</code></pre>
+<p>从的<code>render()</code>方法中传递给CommentList子组件的方法是：在实例化的时候加入key-value参数：</p>
+<pre><code class="lang-js">&lt;div className=<span class="hljs-string">"commentBox"</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Comments<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentList</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{this.props.data}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentForm</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span>
+</code></pre>
+<p>在最终渲染的时候再加入data数值就可以将源代码中组件外的数据一直传递到最终的CommentList子组件了：</p>
+<pre><code class="lang-js">React.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{data}</span> /&gt;</span>,
+  document.getElementById('content')
+);</span>
+</code></pre>
+<p>在子组件中就可以渲染该数据：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> commentNodes = <span class="hljs-keyword">this</span>.props.data.map(
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(comment)</span> </span>{
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Comment</span> <span class="hljs-attribute">author</span>=<span class="hljs-value">{comment.author}</span>&gt;</span>
+          {comment.text}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Comment</span>&gt;</span>
+    );
+});</span>
+</code></pre>
+<p>如果数据来自于服务器就需要在渲染的时候使用获取数据的URL：</p>
+<pre><code class="lang-js">React.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"comments.json"</span> /&gt;</span>,
+  document.getElementById('content')
+);</span>
+</code></pre>
+<h2 id="">组件内部数据：状态</h2>
+<p>在前面提到的<code>props</code>是不可变的，<code>props</code>来自于父组件。每一个组件可以根据接受的<code>props</code>数据渲染自己一次，而<code>this.state</code> 是组件私有的状态数据，可以通过调用<code>this.setState()</code> 来改变它，每当状态更新之后，组件都会重新渲染自己。</p>
+<p>初始化状态，<code>getInitialState()</code>在组建的生命周期中仅执行一次：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> LikeButton = React.createClass({
+  getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> {liked: <span class="hljs-literal">false</span>};
+  },
+  handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span> </span>{
+    <span class="hljs-keyword">this</span>.setState({liked: !<span class="hljs-keyword">this</span>.state.liked});
+  },
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> text = <span class="hljs-keyword">this</span>.state.liked ? <span class="hljs-string">'like'</span> : <span class="hljs-string">'haven\'t liked'</span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.handleClick}</span>&gt;</span>
+        You {text} this. Click to toggle.
+      <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>在React中通过<code>onClick={this.handleClick}</code>的方式给组件绑定事件处理器（各种事件中如<code>onClick</code>、<code>onSubmit</code>用于用户的点击和提交表单事件）。事件处理的具体内容放在<code>handleClick()</code>函数中，可以通过这种方式重新<code>setState()</code>一下状态数据。</p>
+<h2 id="dom">引用组件获取本地DOM元素</h2>
+<p>当我们需要访问真正的浏览器本地DOM元素的时候，可以利用Ref属性给子组件命名，然后利用<code>this.refs</code>引用组件，再调用<code>getDOMNode()</code>方法获取DOM元素。</p>
+<pre><code class="lang-js">  <span class="hljs-keyword">var</span> App = React.createClass({
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> {userInput: <span class="hljs-string">''</span>};
+    },
+    handleChange: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+      <span class="hljs-keyword">this</span>.setState({userInput: e.target.value});
+    },
+    clearAndFocusInput: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">this</span>.setState({userInput: <span class="hljs-string">''</span>}, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">this</span>.refs.theInput.getDOMNode().focus();
+      });
+    },
+    render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.clearAndFocusInput}</span>&gt;</span>
+            Click to Focus and Reset
+          <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">input</span>
+            <span class="hljs-attribute">ref</span>=<span class="hljs-value">"theInput"</span>
+            <span class="hljs-attribute">value</span>=<span class="hljs-value">{this.state.userInput}</span>
+            <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{this.handleChange}</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      );
+    }
+  });</span>
+</code></pre>
+<p>另外需要说明的是用户在表单填入的内容，属于用户跟组件的互动，所以不能用 <code>this.props</code>读取。本例中<code>&lt;input&gt;</code>文本输入框中的值，不能用<code>this.props.value</code>读取，而是要定义一个<code>onChange</code>事件的回调函数，通过<code>event.target.value</code>读取用户输入的值。<code>textarea</code> 元素、<code>select</code>元素、<code>radio</code>元素都属于这种情况。</p>
+<h2 id="">事件与表单</h2>
+<p>当用户提交表单的时候，我们应该获取用户的名字和评论内容然后清空表单，并且提交一个请求到服务器：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> CommentForm = React.createClass({
+  handleSubmit: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e.preventDefault();
+    <span class="hljs-keyword">var</span> author = <span class="hljs-keyword">this</span>.refs.author.getDOMNode().value.trim();
+    <span class="hljs-keyword">var</span> text = <span class="hljs-keyword">this</span>.refs.text.getDOMNode().value.trim();
+    <span class="hljs-keyword">if</span> (!text || !author) {
+      <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// TODO: send request to the server</span>
+    <span class="hljs-keyword">this</span>.refs.author.getDOMNode().value = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">this</span>.refs.text.getDOMNode().value = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">return</span>;
+  },
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentForm"</span> <span class="hljs-attribute">onSubmit</span>=<span class="hljs-value">{this.handleSubmit}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Your name"</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"author"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Say something..."</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"text"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Post"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>我们给表单绑定一个<code>onSubmit</code>处理器，用于当表单提交了合法的输入后清空表单字段：使用<code>this.refs</code>加上名称就可以找到相应组件，然后得到合法输入就发送给server，最后使<code>value = &#39;&#39;</code>清空表单。而且在事件回调中调用<code>preventDefault()</code>来避免浏览器默认地提交表单。</p>
+<p>然后让我在提交给服务器之前就刷新我们的评论列表，从而使应用感觉更快：</p>
+<pre><code class="lang-js">handleCommentSubmit: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(comment)</span> </span>{
+    <span class="hljs-keyword">var</span> comments = <span class="hljs-keyword">this</span>.state.data;
+    <span class="hljs-keyword">var</span> newComments = comments.concat([comment]);
+    <span class="hljs-keyword">this</span>.setState({data: newComments});
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../react-router/README.html" class="navigation navigation-next " aria-label="Next page: React-Router学习笔记"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
