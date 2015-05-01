@@ -276,6 +276,8 @@ pattern: 'http://localhost:8080/user/(assets)',
 
 首先我们使用`getInitialState()`定义了我们的组件初始状态数据，即我们的user asserts最开始为空，然后`componentDidMount()`的作用是在初始化渲染执行之后立刻调用一次，在生命周期中的这个时间点，组件拥有一个 DOM 展现，你可以通过`this.getDOMNode()`来获取相应 DOM 节点。
 
+其实我对这几个状态函数也不太清楚，这里有[组件的详细说明和生命周期（Component Specs and Lifecycle）](http://reactjs.cn/react/docs/component-specs.html)
+
 然后我们有一个`RaisedButton`可以引发`onClick`事件去得到Assets：
 
 ```js

@@ -1,0 +1,34 @@
+{
+    "plugins": [
+        "disqus",
+        "autocover"
+    ],
+    "pluginsConfig": {
+        "disqus": {
+            "plugins": [
+                "disqus"
+            ],
+            "pluginsConfig": {
+                "disqus": {
+                    "shortName": "learningreactjs"
+                }
+            }
+        },
+        "autocover": {
+            "title": "Learning React.js",
+            "author": "Jimmy Lv",
+            "font": {
+                "size": null,
+                "family": "Impact",
+                "color": "#FFF"
+            },
+            "size": {
+                "w": 1800,
+                "h": 2360
+            },
+            "background": {
+                "color": "#09F"
+            }
+        }
+    }
+}
