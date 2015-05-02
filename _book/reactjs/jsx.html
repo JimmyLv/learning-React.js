@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>文件分离和离线转换JSX | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/component.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/README.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.1" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -82,7 +82,7 @@
                 
     
         
-        <li class="chapter " data-level="1.1" data-path="reactjs/jsx.html">
+        <li class="chapter active" data-level="1.1" data-path="reactjs/jsx.html">
             
                 
                     <a href="../reactjs/jsx.html">
@@ -421,17 +421,28 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_50">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="jsx">文件分离和离线转换JSX</h1>
+<p>第一个HTML：</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"build/react.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"build/JSXTransformer.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"example"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/jsx"</span>&gt;</span><span class="javascript">
+      React.render(
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>,
+        document.getElementById('example')
+      );
+    </span></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>为了更好的管理代码和运行代码，可将JSX代码放到单独的<code>src/helloworld.js</code>文件，使用本地工具<code>react-tools</code>转成标准的JavaScript：<code>jsx --watch src/ build/</code>。然后再在HTML中的<code>&lt;script&gt;</code>标签中引入<code>src=&quot;build/helloworld.js&quot;</code>即可。</p>
 
                     
                     </section>
@@ -442,10 +453,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/README.html" class="navigation navigation-prev " aria-label="Previous page: React.js官方文档学习笔记"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/component.html" class="navigation navigation-next " aria-label="Next page: 创建组件与渲染组件：component"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>创建组件与渲染组件：component | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/props.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/jsx.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.2" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -98,7 +98,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.2" data-path="reactjs/component.html">
+        <li class="chapter active" data-level="1.2" data-path="reactjs/component.html">
             
                 
                     <a href="../reactjs/component.html">
@@ -421,17 +421,27 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_48">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="component">创建组件与渲染组件：component</h1>
+<p>第一个React组件：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> CommentBox = React.createClass({
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentBox"</span>&gt;</span>
+        Hello, world! I am a CommentBox.
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );
+  }
+});
+React.render(
+  <span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> /&gt;</span>,
+  document.getElementById('example')
+);</span>
+</code></pre>
+<p>使用<code>createClass</code>创建一个新component，其中必须要有一个<code>render()</code>函数去<code>return</code>相应的组件树（必须包含在一个<code>div</code>或者<code>span</code>里面）。</p>
+<p>另外需要做的事情是用<code>React.render()</code>实例化根组件：<code>&lt;CommentBox /&gt;</code>（注意<code>/</code>这个关闭符号，在其他的如<code>input</code>等标签中也需要关闭）,第二个是注入到原始DOM里面，也就是<code>document.getElementById()</code>（此ID为前面的第一个HTML中的<code>&lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</code>
+）</p>
 
                     
                     </section>
@@ -442,10 +452,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/jsx.html" class="navigation navigation-prev " aria-label="Previous page: 文件分离和离线转换JSX"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/props.html" class="navigation navigation-next " aria-label="Next page: 组件组合与数据传递：props"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

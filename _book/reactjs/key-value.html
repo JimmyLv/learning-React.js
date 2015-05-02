@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>数据模型：key-value | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/state.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/library.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.5" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -146,7 +146,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.5" data-path="reactjs/key-value.html">
+        <li class="chapter active" data-level="1.5" data-path="reactjs/key-value.html">
             
                 
                     <a href="../reactjs/key-value.html">
@@ -421,17 +421,44 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_51">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="key-value">数据模型：key-value</h1>
+<p>在前面我们已经提到了使用属性值的方式保存和传递数据，那如果数据来自HTML外部或者服务器呢？我们用一种模块化的方式将数据传递：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> data = [
+  {author: <span class="hljs-string">"Pete Hunt"</span>, text: <span class="hljs-string">"This is one comment"</span>},
+  {author: <span class="hljs-string">"Jordan Walke"</span>, text: <span class="hljs-string">"This is *another* comment"</span>}
+];
+</code></pre>
+<p>从的<code>render()</code>方法中传递给CommentList子组件的方法是：在实例化的时候加入key-value参数：</p>
+<pre><code class="lang-js">&lt;div className=<span class="hljs-string">"commentBox"</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Comments<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentList</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{this.props.data}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentForm</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span>
+</code></pre>
+<p>在最终渲染的时候再加入data数值就可以将源代码中组件外的数据一直传递到最终的CommentList子组件了：</p>
+<pre><code class="lang-js">React.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{data}</span> /&gt;</span>,
+  document.getElementById('content')
+);</span>
+</code></pre>
+<p>在子组件中就可以渲染该数据：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> commentNodes = <span class="hljs-keyword">this</span>.props.data.map(
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(comment)</span> </span>{
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Comment</span> <span class="hljs-attribute">author</span>=<span class="hljs-value">{comment.author}</span>&gt;</span>
+          {comment.text}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Comment</span>&gt;</span>
+    );
+});</span>
+</code></pre>
+<p>如果数据来自于服务器就需要在渲染的时候使用获取数据的URL：</p>
+<pre><code class="lang-js">React.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">CommentBox</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"comments.json"</span> /&gt;</span>,
+  document.getElementById('content')
+);</span>
+</code></pre>
 
                     
                     </section>
@@ -442,10 +469,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/library.html" class="navigation navigation-prev " aria-label="Previous page: 使用第三方库：library"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/state.html" class="navigation navigation-next " aria-label="Next page: 组件内部数据：state"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

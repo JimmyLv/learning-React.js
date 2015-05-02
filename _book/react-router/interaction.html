@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>子组件的组合：interaction | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/userapimock-user.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/app.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.4" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -280,7 +280,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.4" data-path="react-router/interaction.html">
+        <li class="chapter active" data-level="2.4" data-path="react-router/interaction.html">
             
                 
                     <a href="../react-router/interaction.html">
@@ -421,17 +421,57 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_43">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="interaction">子组件的组合：interaction</h1>
+<h3 id="leftnav">LeftNav组件</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// src/LeftNav/index.react.js</span>
+  render() {
+    <span class="hljs-keyword">const</span> menuTitle = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"menu__title"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this._onHeaderClick}</span>&gt;</span>Menu Title<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>;</span>
+
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">LeftNav</span>
+          <span class="hljs-attribute">ref</span>=<span class="hljs-value">"leftNav"</span>
+          <span class="hljs-attribute">docked</span>=<span class="hljs-value">{false}</span>
+          <span class="hljs-attribute">isInitiallyOpen</span>=<span class="hljs-value">{true}</span>
+          <span class="hljs-attribute">header</span>=<span class="hljs-value">{menuTitle}</span>
+          <span class="hljs-attribute">menuItems</span>=<span class="hljs-value">{menuItems}</span>
+          <span class="hljs-attribute">selectedIndex</span>=<span class="hljs-value">{this._getSelectedIndex()}</span>
+          <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{this._onLeftNavChange}</span>/&gt;</span>
+    );
+  },</span>
+</code></pre>
+<p>重点关注一些render()函数返回的LeftNav组件，其中定义了左导航栏中的menuTitle和menuItems即menu中所要的显示的选项。对于<code>selectedIndex</code>我们定义了一个<code>_getSelectedIndex()</code>方法：选中某个菜单就会激活相应的route，从而由React-Router去选择渲染相应的组件。</p>
+<pre><code class="lang-js"><span class="hljs-comment">// src/LeftNav/index.react.js</span>
+  _getSelectedIndex: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.context.router) {
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    }
+    <span class="hljs-keyword">return</span> menuItems.findIndex(menuItem =&gt; {
+      menuItem.route &amp;&amp; <span class="hljs-keyword">this</span>.context.router.isActive(menuItem.route)
+    })
+  },
+</code></pre>
+<h3 id="home">Home组件</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// src/pages/Home.react.js</span>
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Paper</span> <span class="hljs-attribute">zDepth</span>=<span class="hljs-value">{1}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>{this.state.title}<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">RaisedButton</span> <span class="hljs-attribute">secondary</span>=<span class="hljs-value">{true}</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this._login}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">FontIcon</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"muidocs-icon-custom-github example-button-icon"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"mui-raised-button-label example-icon-button-label"</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">RaisedButton</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">Paper</span>&gt;</span>
+    );
+  },
+
+  _login() {
+    userApi.login()
+      .then(this.onLogin, this.onLoginFail)
+  },</span>
+</code></pre>
+<p>在Home页面中默认显示的就是<code>Hello World!</code>，这是由<code>getInitialState</code>初始化了该组件的初始状态数据，而在<code>RaisedButton</code>中定义了一个<code>onClick</code>事件，该事件回调函数<code>_login()</code>定义了<code>then()</code>方法返回的一个Promise对象。它有两个参数，分别为Promise在<code>success</code>和<code>failure</code> 情况下的回调函数。从而通过<code>setState()</code>方法改变该组件的状态数据，所以我们看到的变化就是<code>&lt;h2&gt;</code>标签的title不同了，正确显示的内容就是<code>userApi</code>使用<code>login()</code>与服务器交互之后获得了不同的msg或者err message。</p>
 
                     
                     </section>
@@ -442,10 +482,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/app.html" class="navigation navigation-prev " aria-label="Previous page: 主组件和主页面App"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/userapimock-user.html" class="navigation navigation-next " aria-label="Next page: userApi与mock-user数据"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

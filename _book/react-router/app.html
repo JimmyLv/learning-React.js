@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>主组件和主页面App | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/interaction.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/routes.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -264,7 +264,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="react-router/app.html">
+        <li class="chapter active" data-level="2.3" data-path="react-router/app.html">
             
                 
                     <a href="../react-router/app.html">
@@ -421,17 +421,63 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_41">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="app">主组件和主页面App</h1>
+<pre><code class="lang-js"><span class="hljs-comment">// src/app.react.js</span>
+<span class="hljs-keyword">const</span> appRoutes = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'root'</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">"/"</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{App}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">DefaultRoute</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'home'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{Home}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'user'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{User}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'assets'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{Assets}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">NotFoundRoute</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{NotFound}</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">Route</span>&gt;</span>
+)</span>
+</code></pre>
+<p>通过<code>import App from &#39;./app.react&#39;</code>引入，并且作为主组件被渲染，当然由于DefaultRoute设置了<code>handler={Home}</code>，所以还会默认渲染Home组件。当我们访问<code>/</code>根路径的时候，React-Router会帮我们渲染那些周边的东西，即主组件App，包括AppLeftNav和ContentWithNav（之后肯定还会加入Header和Footer组件）。然后还会默认渲染一下Home组件，所以显示给我们的就是Home主页面啦。</p>
+<h3 id="basepage">BasePage组件</h3>
+<p>这就是我们之前导入到<code>src/app.react.js</code>文件中的<code>App</code>组件：</p>
+<pre><code class="lang-js"><span class="hljs-comment">// src/app.react.js</span>
+<span class="hljs-keyword">var</span> BasePage = React.createClass({
+  mixins: [Navigation, State],
+  getDefaultProps() {
+    <span class="hljs-keyword">return</span> {
+      title: <span class="hljs-string">'Title'</span>
+    }
+  },
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">AppCanvas</span> <span class="hljs-attribute">predefinedLayout</span>=<span class="hljs-value">{1}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AppBar</span>
+          <span class="hljs-attribute">className</span>=<span class="hljs-value">"mui-dark-theme"</span>
+          <span class="hljs-attribute">onMenuIconButtonTouchTap</span>=<span class="hljs-value">{this._toggleLeftNav}</span>
+          <span class="hljs-attribute">showMenuIconButton</span>=<span class="hljs-value">{true}</span>
+          <span class="hljs-attribute">title</span>=<span class="hljs-value">{this.props.title}</span>
+          <span class="hljs-attribute">zDepth</span>=<span class="hljs-value">{0}</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">AppBar</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AppLeftNav</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"leftNav"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">ContentWithNav</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">RouteHandler</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">ContentWithNav</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">AppCanvas</span>&gt;</span>
+    );
+  },
+  _toggleLeftNav() {
+    this.refs.leftNav.toggle()
+  }
+});</span>
+</code></pre>
+<p>从该文件的前面可以看到我们从<code>material-ui</code>引入了一些HTML组件，，所以可以直接调用从而轻易达到一些很酷炫的效果，我们可以暂时不用管这个标签。</p>
+<pre><code class="lang-js">import {
+  AppBar,
+  AppCanvas,
+  LeftNav,
+  IconButton,
+  Icons
+} from <span class="hljs-string">'material-ui'</span>
+</code></pre>
+<p>可以注意到的是<code>ContentWithNav</code>和<code>BasePage</code>都使用了从<code>&#39;react-router&#39;</code>中导入的<code>&lt;RouteHandler /&gt;</code>，但是我还不知道它是做什么用的?</p>
+<p>然后我们可以看到的是使用<code>getDefaultProps()</code>设置了默认的title属性值，然后通过<code>title={this.props.title}</code>将AppBar显示为Title。并且定义了<code>onMenuIconButtonTouchTap</code>这个点击动作，效果就是将整个LeftNav切换显示，而且是通过<code>refs</code>的方式得到相应的LeftNav组件。</p>
 
                     
                     </section>
@@ -442,10 +488,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/routes.html" class="navigation navigation-prev " aria-label="Previous page: 路由规则：routes"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/interaction.html" class="navigation navigation-next " aria-label="Next page: 子组件的组合：interaction"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

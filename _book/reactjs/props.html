@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>组件组合与数据传递：props | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/library.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/component.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.3" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -114,7 +114,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.3" data-path="reactjs/props.html">
+        <li class="chapter active" data-level="1.3" data-path="reactjs/props.html">
             
                 
                     <a href="../reactjs/props.html">
@@ -421,17 +421,27 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_53">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="props">组件组合与数据传递：props</h1>
+<p>每当创建新的子组件之后，都需要在根组件中的<code>render()</code>函数中<code>return</code>相应的组件树：</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentBox"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Comments<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">CommentForm</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>与<code>React.render()</code>实例化跟组件一样，<code>&lt;CommentList /&gt;</code>实例化每一个子组件，在JSX中只能使用<code>className</code>，因为<code>class</code>为保留字，其他的也类似。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"comment"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentAuthor"</span>&gt;</span>
+            {this.props.author}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+            {this.props.children}
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );</span>
+</code></pre>
+<p>在<code>return</code>的组件树中通过一个属性value的方式可以在组件之间传递数据。从父节点传递到子节点的数据称为 <code>props</code>，是属性（properties）的缩写，通过<code>this.props.key</code>就可以访问到相应的<code>value</code>，通过<code>children</code>可以访问任何内嵌元素。在 JSX 中将JavaScript表达式放在大括号中，可以作为属性或者子节点，即遇到<code>&lt;</code>符号渲染HTML标签，遇到<code>{</code>识别为JS表达式。</p>
 
                     
                     </section>
@@ -442,10 +452,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/component.html" class="navigation navigation-prev " aria-label="Previous page: 创建组件与渲染组件：component"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/library.html" class="navigation navigation-next " aria-label="Next page: 使用第三方库：library"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

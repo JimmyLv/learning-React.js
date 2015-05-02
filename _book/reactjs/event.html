@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>事件与表单：event | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/README.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/refs.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.8" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -194,7 +194,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.8" data-path="reactjs/event.html">
+        <li class="chapter active" data-level="1.8" data-path="reactjs/event.html">
             
                 
                     <a href="../reactjs/event.html">
@@ -421,17 +421,43 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_49">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="event">事件与表单：event</h1>
+<p>当用户提交表单的时候，我们应该获取用户的名字和评论内容然后清空表单，并且提交一个请求到服务器：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> CommentForm = React.createClass({
+  handleSubmit: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e.preventDefault();
+    <span class="hljs-keyword">var</span> author = <span class="hljs-keyword">this</span>.refs.author.getDOMNode().value.trim();
+    <span class="hljs-keyword">var</span> text = <span class="hljs-keyword">this</span>.refs.text.getDOMNode().value.trim();
+    <span class="hljs-keyword">if</span> (!text || !author) {
+      <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// TODO: send request to the server</span>
+    <span class="hljs-keyword">this</span>.refs.author.getDOMNode().value = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">this</span>.refs.text.getDOMNode().value = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">return</span>;
+  },
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentForm"</span> <span class="hljs-attribute">onSubmit</span>=<span class="hljs-value">{this.handleSubmit}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Your name"</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"author"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Say something..."</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"text"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Post"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>我们给表单绑定一个<code>onSubmit</code>处理器，用于当表单提交了合法的输入后清空表单字段：使用<code>this.refs</code>加上名称就可以找到相应组件，然后得到合法输入就发送给server，最后使<code>value = &#39;&#39;</code>清空表单。而且在事件回调中调用<code>preventDefault()</code>来避免浏览器默认地提交表单。</p>
+<p>然后让我在提交给服务器之前就刷新我们的评论列表，从而使应用感觉更快：</p>
+<pre><code class="lang-js">handleCommentSubmit: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(comment)</span> </span>{
+    <span class="hljs-keyword">var</span> comments = <span class="hljs-keyword">this</span>.state.data;
+    <span class="hljs-keyword">var</span> newComments = comments.concat([comment]);
+    <span class="hljs-keyword">this</span>.setState({data: newComments});
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
 
                     
                     </section>
@@ -442,10 +468,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/refs.html" class="navigation navigation-prev " aria-label="Previous page: 引用组件：refs"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/README.html" class="navigation navigation-next " aria-label="Next page: React-Router学习笔记与项目结构解析"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

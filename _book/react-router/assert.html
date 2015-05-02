@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>Assert组件 | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
     
-    
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/userapimock-user.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.6" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +63,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -312,7 +310,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.6" data-path="react-router/assert.html">
+        <li class="chapter active" data-level="2.6" data-path="react-router/assert.html">
             
                 
                     <a href="../react-router/assert.html">
@@ -421,17 +419,64 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_42">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="assert">Assert组件</h1>
+<pre><code class="lang-js"><span class="hljs-comment">// src/pages/Assets.react.js</span>
+  getInitialState() {
+    <span class="hljs-keyword">return</span> {
+      title: <span class="hljs-string">'User Assets'</span>,
+      assets: []
+    }
+  },
+  componentDidMount() {
+    <span class="hljs-keyword">this</span>._getAssets()
+  },
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Paper</span> <span class="hljs-attribute">zDepth</span>=<span class="hljs-value">{1}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+          {this._renderAssets()}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">RaisedButton</span> <span class="hljs-attribute">secondary</span>=<span class="hljs-value">{true}</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this._getAssets}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">FontIcon</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"muidocs-icon-custom-github example-button-icon"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"mui-raised-button-label example-icon-button-label"</span>&gt;</span>Get Assets<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">RaisedButton</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">Paper</span>&gt;</span>
+    );
+  },</span>
+</code></pre>
+<p>首先我们使用<code>getInitialState()</code>定义了我们的组件初始状态数据，即我们的user asserts最开始为空，然后<code>componentDidMount()</code>的作用是在初始化渲染执行之后立刻调用一次，在生命周期中的这个时间点，组件拥有一个 DOM 展现，你可以通过<code>this.getDOMNode()</code>来获取相应 DOM 节点。</p>
+<p>其实我对这几个状态函数也不太清楚，这里有<a href="http://reactjs.cn/react/docs/component-specs.html" target="_blank">组件的详细说明和生命周期（Component Specs and Lifecycle）</a></p>
+<p>然后我们有一个<code>RaisedButton</code>可以引发<code>onClick</code>事件去得到Assets：</p>
+<pre><code class="lang-js">_getAssets(userData) {
+    userApi.assets(userData)
+      .then(<span class="hljs-keyword">this</span>.onAssetsLoad, <span class="hljs-keyword">this</span>.onAssetsLoadFailed)
+  },
+  onAssetsLoad(assets) {
+    <span class="hljs-keyword">this</span>.setState({
+      assets: assets.data
+    })
+  },
+  onAssetsLoadFailed(err) {
+    <span class="hljs-comment">// handle err</span>
+  },
+</code></pre>
+<p>当然组件每一次更新都会在<code>&lt;ul&gt;</code>中使用<code>map()</code>方法渲染我们的每一个asset：</p>
+<pre><code class="lang-js">  _renderAssets() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.state.assets.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(asset)</span> </span>{
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"asset__item"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"asset__attribute"</span>&gt;</span>name: {asset.name}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"asset__attribute"</span>&gt;</span>date: {asset.date}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"asset__attribute"</span>&gt;</span>number: {asset.number}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"asset__attribute"</span>&gt;</span>type: {asset.type}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+      )
+    })
+  }</span>
+</code></pre>
+<p>至此，我们的项目结构已经基本了解，Let&#39;s Move On!</p>
 
                     
                     </section>
@@ -442,10 +487,8 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/userapimock-user.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: userApi与mock-user数据"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>userApi与mock-user数据 | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/assert.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/interaction.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.5" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -296,7 +296,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.5" data-path="react-router/userapimock-user.html">
+        <li class="chapter active" data-level="2.5" data-path="react-router/userapimock-user.html">
             
                 
                     <a href="../react-router/userapimock-user.html">
@@ -421,17 +421,53 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_46">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="userapimock-user">userApi与mock-user数据</h1>
+<pre><code class="lang-js"><span class="hljs-comment">// src/services/user.js</span>
+<span class="hljs-keyword">const</span> userApis = {
+  login: {
+    method: <span class="hljs-string">'post'</span>,
+    url: <span class="hljs-string">'/user/login'</span>
+  },
+  logout: {
+    method: <span class="hljs-string">'post'</span>,
+    url: <span class="hljs-string">'/user/logout'</span>
+  },
+  assets: {
+    method: <span class="hljs-string">'post'</span>,
+    url: <span class="hljs-string">'/user/assets'</span>
+  }
+}
+</code></pre>
+<p>这里应该就是定义不同的api去与后台服务器交互，设置了不同request method和url。</p>
+<pre><code class="lang-js"><span class="hljs-comment">// src/services/mock-user.js</span>
+pattern: <span class="hljs-string">'http://localhost:8080/user/(assets)'</span>,
+    <span class="hljs-comment">// callback that returns the data</span>
+    fixtures: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> {
+        data: [
+          {
+            name: <span class="hljs-string">'Mac Book'</span>,
+            number: <span class="hljs-string">'1'</span>,
+            date: <span class="hljs-string">'2015-4-25'</span>,
+            type: <span class="hljs-string">'laptop'</span>
+          },{
+            name: <span class="hljs-string">'Mac Book'</span>,
+            number: <span class="hljs-string">'1'</span>,
+            date: <span class="hljs-string">'2015-4-25'</span>,
+            type: <span class="hljs-string">'laptop'</span>
+          },{
+            name: <span class="hljs-string">'Mac Book'</span>,
+            number: <span class="hljs-string">'1'</span>,
+            date: <span class="hljs-string">'2015-4-25'</span>,
+            type: <span class="hljs-string">'laptop'</span>
+          }
+        ]
+      }
+    },
+</code></pre>
+<p>而在mock-user中设置了一些pattern去匹配React组件所想要访问的后台的url，匹配到了就返回相应的数据。在调试的时候只需要运行<code>gulp dev --dev</code>就可以使用mock-user中的数据了，注意<code>--dev</code>参数。</p>
 
                     
                     </section>
@@ -442,10 +478,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/interaction.html" class="navigation navigation-prev " aria-label="Previous page: 子组件的组合：interaction"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/assert.html" class="navigation navigation-next " aria-label="Next page: Assert组件"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

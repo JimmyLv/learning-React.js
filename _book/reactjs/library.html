@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>使用第三方库：library | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/key-value.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/props.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.4" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -130,7 +130,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.4" data-path="reactjs/library.html">
+        <li class="chapter active" data-level="1.4" data-path="reactjs/library.html">
             
                 
                     <a href="../reactjs/library.html">
@@ -421,17 +421,25 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_52">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="library">使用第三方库：library</h1>
+<p>首先需要在<code>&lt;head&gt;</code>中加入<code>&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js&quot;&gt;&lt;/script&gt;</code>，示例为添加<strong>Showdown</strong>处理 Markdown 文本并且转换为原始的 HTML。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> converter = <span class="hljs-keyword">new</span> Showdown.converter();
+<span class="hljs-keyword">var</span> Comment = React.createClass({
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"comment"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"commentAuthor"</span>&gt;</span>
+          {this.props.author}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+        {converter.makeHtml(this.props.children.toString())}
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>只需要<code>new</code>出<code>converter</code>就可以调用它的<code>makeHtml</code>方法啦，非常的灵活。</p>
 
                     
                     </section>
@@ -442,10 +450,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/props.html" class="navigation navigation-prev " aria-label="Previous page: 组件组合与数据传递：props"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/key-value.html" class="navigation navigation-next " aria-label="Next page: 数据模型：key-value"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

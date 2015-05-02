@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>Router.run | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/routes.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/README.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -232,7 +232,7 @@
                 
     
         
-        <li class="chapter " data-level="2.1" data-path="react-router/routerrun.html">
+        <li class="chapter active" data-level="2.1" data-path="react-router/routerrun.html">
             
                 
                     <a href="../react-router/routerrun.html">
@@ -421,17 +421,34 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_44">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="routerrun">Router.run</h1>
+<p>The main API into react router. It runs your routes, matching them against a location, and then calls back with the next state for you to render.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// src/index.react.js</span>
+run(appRoutes, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Handler, state)</span> </span>{
+  React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Handler</span> /&gt;</span>, document.body);
+});</span>
+</code></pre>
+<p>我们项目的<code>appRoutes</code>路由规则放在<code>app-routes.react.js</code>中，通过<code>import appRoutes from &#39;./app-routes.react&#39;</code>引入，我们会在之后对路由规则进行介绍。</p>
+<h3 id="signature">Signature</h3>
+<p><code>Router.run(routes, [location,] callback(Root, state))</code></p>
+<p>callback的参数：</p>
+<ul>
+<li><code>Root</code></li>
+</ul>
+<p>A ReactComponent class with the current match all wrapped up inside it, ready for you to render.</p>
+<ul>
+<li><code>state</code></li>
+</ul>
+<p>An object containing the matched state.</p>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre><code class="lang-js">Router.run(routes, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Root)</span> </span>{
+  <span class="hljs-comment">// whenever the url changes, this callback is called again</span>
+  React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Root</span>/&gt;</span>, document.body);
+});</span>
+</code></pre>
+<p>所以我们的url一有变化，Handler组件就会被回调函数重新渲染。</p>
 
                     
                     </section>
@@ -442,10 +459,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/README.html" class="navigation navigation-prev " aria-label="Previous page: React-Router学习笔记与项目结构解析"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/routes.html" class="navigation navigation-next " aria-label="Next page: 路由规则：routes"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

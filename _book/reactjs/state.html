@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>组件内部数据：state | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../reactjs/refs.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../reactjs/key-value.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="1.6" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -162,7 +162,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.6" data-path="reactjs/state.html">
+        <li class="chapter active" data-level="1.6" data-path="reactjs/state.html">
             
                 
                     <a href="../reactjs/state.html">
@@ -421,17 +421,29 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_55">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="state">组件内部数据：state</h1>
+<p>在前面提到的<code>props</code>是不可变的，<code>props</code>来自于父组件。每一个组件可以根据接受的<code>props</code>数据渲染自己一次，而<code>this.state</code> 是组件私有的状态数据，可以通过调用<code>this.setState()</code> 来改变它，每当状态更新之后，组件都会重新渲染自己。</p>
+<p>初始化状态，<code>getInitialState()</code>在组建的生命周期中仅执行一次：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> LikeButton = React.createClass({
+  getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> {liked: <span class="hljs-literal">false</span>};
+  },
+  handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span> </span>{
+    <span class="hljs-keyword">this</span>.setState({liked: !<span class="hljs-keyword">this</span>.state.liked});
+  },
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> text = <span class="hljs-keyword">this</span>.state.liked ? <span class="hljs-string">'like'</span> : <span class="hljs-string">'haven\'t liked'</span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.handleClick}</span>&gt;</span>
+        You {text} this. Click to toggle.
+      <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    );
+  }
+});</span>
+</code></pre>
+<p>在React中通过<code>onClick={this.handleClick}</code>的方式给组件绑定事件处理器（各种事件中如<code>onClick</code>、<code>onSubmit</code>用于用户的点击和提交表单事件）。事件处理的具体内容放在<code>handleClick()</code>函数中，可以通过这种方式重新<code>setState()</code>一下状态数据。</p>
 
                     
                     </section>
@@ -442,10 +454,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs/key-value.html" class="navigation navigation-prev " aria-label="Previous page: 数据模型：key-value"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs/refs.html" class="navigation navigation-next " aria-label="Next page: 引用组件：refs"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

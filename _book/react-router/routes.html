@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React.js官方文档学习笔记 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>路由规则：routes | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../reactjs/jsx.html" />
+    <link rel="next" href="../react-router/app.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../react-router/routerrun.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1430532563480">
+    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1430532563480">
     
 
 <div class="book-summary">
@@ -65,7 +65,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="reactjs/README.html">
+        <li class="chapter " data-level="1" data-path="reactjs/README.html">
             
                 
                     <a href="../reactjs/README.html">
@@ -248,7 +248,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.2" data-path="react-router/routes.html">
+        <li class="chapter active" data-level="2.2" data-path="react-router/routes.html">
             
                 
                     <a href="../react-router/routes.html">
@@ -421,17 +421,26 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_45">
                     
-                        <h1 id="reactjs">React.js官方文档学习笔记</h1>
-<h2 id="">文件分离和离线转换</h2>
-<h2 id="">创建组件与渲染组件</h2>
-<h2 id="">组件组合与数据传递</h2>
-<h2 id="">使用第三方库</h2>
-<h2 id="">数据模型</h2>
-<h2 id="">组件内部数据：状态</h2>
-<h2 id="dom">引用组件获取本地DOM元素</h2>
-<h2 id="">事件与表单</h2>
+                        <h1 id="routes">路由规则：routes</h1>
+<pre><code class="lang-js"><span class="hljs-comment">// src/app.react.js</span>
+<span class="hljs-keyword">const</span> appRoutes = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'root'</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">"/"</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{App}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">DefaultRoute</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'home'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{Home}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'user'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{User}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">Route</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'assets'</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{Assets}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">NotFoundRoute</span> <span class="hljs-attribute">handler</span>=<span class="hljs-value">{NotFound}</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">Route</span>&gt;</span>
+)</span>
+</code></pre>
+<p>这样就定义了包含四条路由规则的路由，分别指向不同的路径。（严格来说还有一个指向<code>/</code>的路由，访问<code>/</code>会默认会渲染Home组件，注意这个时候其他项都没有被激活。</p>
+<h3 id="defaultroute">DefaultRoute</h3>
+<p>A DefaultRoute will be the matched child route when the parent&#39;s path matches exactly.</p>
+<p>You&#39;d want to use this to ensures a child RouteHandler is always rendered when there is no child match. Think of it like index.html in a directory of a static html server.</p>
+<h3 id="notfoundroute">NotFoundRoute</h3>
+<p>A NotFoundRoute is active when the beginning of its parent&#39;s path matches the URL but none of its siblings do. It can be found at any level of your hierarchy, allowing you to have a context-aware &quot;not found&quot; screens.</p>
+<p>You&#39;d want to use this to handle bad links and users typing invalid urls into the address bar.</p>
 
                     
                     </section>
@@ -442,10 +451,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../react-router/routerrun.html" class="navigation navigation-prev " aria-label="Previous page: Router.run"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../reactjs/jsx.html" class="navigation navigation-next " aria-label="Next page: 文件分离和离线转换JSX"><i class="fa fa-angle-right"></i></a>
+        <a href="../react-router/app.html" class="navigation navigation-next " aria-label="Next page: 主组件和主页面App"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
