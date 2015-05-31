@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React-Router学习笔记与项目结构解析 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>React.js Tutorial Part 1 | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../react-router/routerrun.html" />
+    <link rel="next" href="../reactjs_tutorial/reactjs_tutorial_part_2.html" />
     
     
-    <link rel="prev" href="../reactjs/event.html" />
+    <link rel="prev" href="../reactjs_tutorial/README.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2" data-basepath=".." data-revision="1433077076354">
+    <div class="book"  data-level="3.1" data-basepath=".." data-revision="1433077076354">
     
 
 <div class="book-summary">
@@ -215,7 +215,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="2" data-path="react-router/README.html">
+        <li class="chapter " data-level="2" data-path="react-router/README.html">
             
                 
                     <a href="../react-router/README.html">
@@ -350,7 +350,7 @@
                 
     
         
-        <li class="chapter " data-level="3.1" data-path="reactjs_tutorial/reactjs_tutorial_part_1.html">
+        <li class="chapter active" data-level="3.1" data-path="reactjs_tutorial/reactjs_tutorial_part_1.html">
             
                 
                     <a href="../reactjs_tutorial/reactjs_tutorial_part_1.html">
@@ -491,15 +491,116 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_394">
+                    <section class="normal" id="section-gitbook_411">
                     
-                        <h1 id="react-router">React-Router学习笔记与项目结构解析</h1>
-<h2 id="routerrun"><code>Router.run</code></h2>
-<h2 id="routes">路由规则：<code>routes</code></h2>
-<h2 id="">主组件和主页面</h2>
-<h2 id="">子组件的组合与交互</h2>
-<h2 id="userapimock-user">userApi与mock-user数据</h2>
-<h2 id="assert">Assert组件</h2>
+                        <h1 id="reactjs-tutorial-part-1">React.js Tutorial Part 1</h1>
+<p>原文地址：<a href="http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/" target="_blank">http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/</a></p>
+<p>Welcome to my tutorial on how to get a website up and running using <a href="http://facebook.github.io/react/" target="_blank">React.js</a> and <a href="http://nodejs.org/" target="_blank">Node.js</a>. I am expecting this to be a multipart tutorial as we go through building a job board for my local <a href="http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/" target="_blank">Node.js Meetup Group</a>, though I am not sure how long these tutorials will last. I hope you enjoy them and if so feel free to share them! You can follow along with my progression on my jobs.nodedc.com <a href="https://github.com/joshfinnie/jobs.nodedc.com" target="_blank">github repo</a></p>
+<p>欢迎来到我的教程，本教程将讲述如何利用<a href="http://facebook.github.io/react/" target="_blank">React.js</a>和<a href="http://nodejs.org/" target="_blank">Node.js</a>搭建一个网站。通过这几部分的教程，期望我们能够一起为我的本地<code>Node.js</code>见面群（Node.js Meetup Group）搭建一个工作布告栏，尽管我都不确定这些教程会持续多久。期望你能够享受并且尽情地分享这些教程！你可以在jobs.nodedc.com <a href="https://github.com/joshfinnie/jobs.nodedc.com" target="_blank">github repo</a>上随时查看我的进展。</p>
+<h2 id="getting-started-with-express">Getting Started with Express</h2>
+<p>In this tutorial I am going to assume you have Node.js installed since it is becomming standard in so many of today&#39;s build processes. If you do not have it installed, check out <a href="http://howtonode.org/how-to-install-nodejs" target="_blank">this article</a>.</p>
+<p>在本次教程中，我假设你已经安装好Node.js，因为它已经在很多现代构建流程中成为标准了。如果你还没有安装好，参考<a href="http://howtonode.org/how-to-install-nodejs" target="_blank">这篇文章</a>吧！</p>
+<p>The first thing we are going to do is set up a standard <a href="http://expressjs.com/" target="_blank">express</a> app. This is easy do to through <code>express-generator</code>. Install <code>express-generator</code> using the following command:</p>
+<p>我们要做的第一件事就是搭建一个标准的<a href="http://expressjs.com/" target="_blank">express</a>应用，使用<code>express-generator</code>能够轻松快速生成相应的文件目录（译者注：脚手架scaffold）。使用以下命令安装：</p>
+<pre><code class="lang-shell">$ npm install express-generator -g
+</code></pre>
+<p>Once installed, we are going to create a basic express app. To generate this express app, we run the following command:</p>
+<p>安装好之后就可以构建一个基础的express应用了，使用以下命令：</p>
+<pre><code class="lang-shell">$ express jobs.nodedc.com
+
+create : jobs.nodedc.com
+create : jobs.nodedc.com/package.json
+create : jobs.nodedc.com/app.js
+create : jobs.nodedc.com/public
+create : jobs.nodedc.com/public/javascripts
+create : jobs.nodedc.com/public/stylesheets
+create : jobs.nodedc.com/public/stylesheets/style.css
+create : jobs.nodedc.com/routes
+create : jobs.nodedc.com/routes/index.js
+create : jobs.nodedc.com/routes/users.js
+create : jobs.nodedc.com/public/images
+create : jobs.nodedc.com/views
+create : jobs.nodedc.com/views/index.jade
+create : jobs.nodedc.com/views/layout.jade
+create : jobs.nodedc.com/views/error.jade
+create : jobs.nodedc.com/bin
+create : jobs.nodedc.com/bin/www
+
+install dependencies:
+    $ cd jobs.nodedc.com &amp;&amp; npm install
+
+run the app:
+    $ DEBUG=jobs.nodedc.com ./bin/www
+</code></pre>
+<p>With the output of <code>express-generator</code> we can see that we are well on our way to what we need from Express. This is a bit overkill, but with a few small changes, we should have a working express app which will then run (eventually) our API and serve our React site.</p>
+<p>从<code>express-generator</code>的输出中我们可以看到我们正在构建所需要的Express部件。这有一点矫枉过正，但有一些小的变化，我们应该要有一个可以工作的express程序来（最终）运行我们的API，从而服务于我们的React网站。</p>
+<p>Let&#39;s start up this generated site and see what we get. Below is the image that you should see in your browser (at <a href="http://localhost:3000/" target="_blank">http://localhost:3000</a>) if you are following along.</p>
+<p>让我们启动已经生成的网站看看吧，从下面的图片你可以从浏览器中(<a href="http://localhost:3000/" target="_blank">http://localhost:3000</a>) 看到以下内容。</p>
+<p><img src="http://www.joshfinnie.com/assets/images/blog/hello-express.png" alt=""></p>
+<p>I then recommend going through the generated code and cleaning it up a little bit. We will not need the <code>user</code> routes so I just deleted them. I also expanded on the <code>package.json</code> some to add a description and keywords as well as changed the version to something more reasonable.</p>
+<p>我建议查看已生成的代码，然后清除一些不必要的东西。我们不需要<code>user</code>路由就删掉，然后需要在<code>package.json</code>中添加一些描述、关键字和版本，使之更加合理。</p>
+<h2 id="adding-reactjs">Adding React.js</h2>
+<p>Now that we have a pretty basic express application as our backend, we are now going to jump into adding react. Adding react is not that difficult, but there are a few ways of doing things. Since we are already within a node.js app, I am going to go down the route of building our jsx scripts into javascript. To get ready for this, we need to install the <code>react-tools</code> node package. You can do that by the following command:</p>
+<p>既然我们已经有了一个漂亮的基础Express应用作为后端，现在就开始添加React。添加React并不困难，这里有几种能够实现。由于我们已经有了node.js应用，我们就继续添加相应的工具来将jsx脚本编译成标准JavaScript。为此，我们需要安装<code>react-tools</code>这个node包，使用如下命令：</p>
+<pre><code>$ npm install react-tools --save-dev
+</code></pre><p>We add the <code>--save-dev</code> flag to make sure the <code>react-tools</code> package is saved as a development requirement in our <code>package.json</code>. Now, to convert the jsx scripts to javascript, we just have to run the following command:</p>
+<p>使用<code>--save-dev</code>标志可以保证<code>react-tools</code>这个包能够作为开发环境依赖添加到我们的<code>package.json</code>里面。现在我们可以使用这样的命令将jsx脚本编译成标准JavaScript：</p>
+<pre><code>$ ./node_modules/react-tools/bin/jsx public/javascripts/src/ public/javascripts/build/
+</code></pre><p><strong> Note: </strong> You could also install <code>react-tools</code> globlally if you&#39;d like.</p>
+<p><strong>注意：</strong> 你也可以全局安装<code>react-tools</code>。</p>
+<p>Next we want to <a href="http://facebook.github.io/react/downloads/react-0.12.2.zip" target="_blank">download React 0.12.2</a>, extract, and move <code>react-0.12.2/build/react.min.js</code> to our <code>/public/javascripts/build/</code> directory. Let&#39;s add React.js to our template! The default templating language for <code>express-generator</code> is <a href="http://jade-lang.com/" target="_blank">Jade</a>. It is a bit difficult to comprehend at first (and <code>express-generator</code> allows you to substitute either <a href="http://www.embeddedjs.com/" target="_blank">EJS</a> or <a href="http://handlebarsjs.com/" target="_blank">Handlebars</a> if you are more comfortable with those), but I find it super simplistic!</p>
+<p>接下来，我们下载<a href="http://facebook.github.io/react/downloads/react-0.12.2.zip" target="_blank">React 0.12.2</a>，解压，移动<code>react-0.12.2/build/react.min.js</code>到<code>/public/javascripts/build/</code>目录。然后添加React.js到我们的模板中！<code>express-generator</code>的默认模板语言是<a href="http://jade-lang.com/" target="_blank">Jade</a>。（<code>express-generator</code>还允许你使用<a href="http://www.embeddedjs.com/" target="_blank">EJS</a>或者<a href="http://handlebarsjs.com/" target="_blank">Handlebars</a>，如果你更喜欢他们的话。）这在一开始可能会有点理解困难，但是我发现这特别简单。</p>
+<p>To add <code>react.min.js</code> to our templates, we just append it to the bottom of our <code>views/layout.jade</code> file as below:</p>
+<p>将<code>react.min.js</code>添加到模板中，然后我们可以在<code>views/layout.jade</code>文件的底部添加：</p>
+<pre><code class="lang-jade">doctype html
+html
+head
+    title= title
+    link(rel=&#39;stylesheet&#39;, href=&#39;/stylesheets/style.css&#39;)
+body
+    block content
+    script(src=&#39;/javascripts/build/react.min.js&#39;)
+</code></pre>
+<p>Rerunning <code>DEBUG=jobs.nodedc.com ./bin/www</code> we should see our starting screen again, but now it&#39;s React.js ready. Now our templates should be ready for our React Components!</p>
+<p>重新运行<code>DEBUG=jobs.nodedc.com ./bin/www</code>，应该可以看到跟开始时一模一样的内容，但是React.js已经准备好了。现在模板就为React模块做好准备啦！</p>
+<h2 id="adding-a-reactjs-component">Adding a React.js Component</h2>
+<p>Now that we have our express app running react.js, we can now start the process of writing our react application. In this part of the tutorial, we are only going to do a basic &quot;Hello World&quot; component, but next time we will start developing the components we need for our job board. So first, let&#39;s create our component.</p>
+<p>既然我们已经准备好了可以运行react.js的express应用，我们现在可以开始编写React应用了。在这部分的教程中，我们只是写一个最基础的“Hello World”组件，但是下一次我们会正式开始开发所需要的工作布告栏。让我们开始吧。</p>
+<p>The first thing we want to do is create the <code>div</code> needed for react. In the <code>views/index.jade</code> file, add a div with an <code>id</code> of &quot;example&quot;. With jade, your <code>index.jade</code> file should look like this:</p>
+<p>第一件要做的是就是为react创建一个<code>div</code>标签。在<code>views/index.jade</code>文件中添加一个div，<code>id</code>为&quot;example&quot;。<code>index.jade</code>文件如下：</p>
+<pre><code class="lang-jade">extends layout
+
+block content
+    #example
+</code></pre>
+<p>Next we want to create a simple react.js component in our <code>public/javascripts/src/</code> folder called <code>helloworld.jsx</code>. This component should look like:</p>
+<p>接下来我们在<code>public/javascripts/src/</code>目录中创建一个简单的react.js组件，<code>helloworld.jsx</code>：</p>
+<pre><code class="lang-js">React.render(
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello, world from React.js!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>,
+document.getElementById('example')
+);</span>
+</code></pre>
+<p>Because we are using the <code>react-tools</code> node package, we want to add the compiled javascript code to our templates. Change you <code>views/layout.jade</code> file to the following:</p>
+<p>由于我们使用的<code>react-tools</code>包，所以我们将添加已经编译好的JavaScript代码。改变<code>views/layout.jade</code>文件：</p>
+<pre><code>doctype html
+html
+head
+    title= title
+    link(rel=&#39;stylesheet&#39;, href=&#39;/stylesheets/style.css&#39;)
+body
+    block content
+    script(src=&#39;/javascripts/build/react.min.js&#39;)
+    script(src=&#39;/javascripts/build/helloworld.js&#39;)
+</code></pre><p>And run the <code>react-tools</code> package to compile our component with the following command:</p>
+<p>使用<code>react-tools</code>编译：</p>
+<pre><code class="lang-shell">$ ./node_modules/react-tools/bin/jsx -x jsx public/javascripts/src/ public/javascripts/build/
+</code></pre>
+<p>Remember to use the <code>-x</code> flag as we used the extension <code>.jsx</code> for our jsx code. Now running the express server again we should see:</p>
+<p>记得使用<code>-x</code>标志，因为我们使用<code>.jsx</code>作为代码文件扩展名，现在运行重新运行服务器：</p>
+<p><img src="http://www.joshfinnie.com/assets/images/blog/hello-react.png" alt=""></p>
+<p>There we have it. A pretty simple Hello World app with React.js and Express.js. Next we will clean up this process with some automation help from <a href="http://gulpjs.com/" target="_blank">gulp</a> and start building react.js components to help us with our NodeDC job board!</p>
+<p>至此，我们使用React.js和Express.js搭建了一个简单的Hello World应用。下一次我们会使用<a href="http://gulpjs.com/" target="_blank">gulp</a>来自动化进行整个搭建过程，然后正式开始使用react.js组件来帮助我们搭建NodeDC工作布告栏。</p>
+<p><em>{ meta: { tags: [ <a href="http://www.joshfinnie.com/tag/tutorial/" target="_blank">tutorial</a>, <a href="http://www.joshfinnie.com/tag/reactjs/" target="_blank">react.js</a>, <a href="http://www.joshfinnie.com/tag/javascript/" target="_blank">javascript</a>, <a href="http://www.joshfinnie.com/tag/nodejs/" target="_blank">node.js</a>, <a href="http://www.joshfinnie.com/tag/expressjs/" target="_blank">express.js</a> ], post_date: 2015-01-10 } }</em></p>
 
                     
                     </section>
@@ -510,10 +611,10 @@
         </div>
 
         
-        <a href="../reactjs/event.html" class="navigation navigation-prev " aria-label="Previous page: 事件与表单：event"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs_tutorial/README.html" class="navigation navigation-prev " aria-label="Previous page: React.js Tutorial（翻译）"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../react-router/routerrun.html" class="navigation navigation-next " aria-label="Next page: Router.run"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs_tutorial/reactjs_tutorial_part_2.html" class="navigation navigation-next " aria-label="Next page: React.js Tutorial Part 2"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>React-Router学习笔记与项目结构解析 | Jimmy Lv&#39;s React学习笔记</title>
+        <title>React.js Tutorial Part 2 | Jimmy Lv&#39;s React学习笔记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../react-router/routerrun.html" />
+    <link rel="next" href="../reactjs_tutorial/reactjs_tutorial_part_interlude.html" />
     
     
-    <link rel="prev" href="../reactjs/event.html" />
+    <link rel="prev" href="../reactjs_tutorial/reactjs_tutorial_part_1.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2" data-basepath=".." data-revision="1433077076354">
+    <div class="book"  data-level="3.2" data-basepath=".." data-revision="1433077076354">
     
 
 <div class="book-summary">
@@ -215,7 +215,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="2" data-path="react-router/README.html">
+        <li class="chapter " data-level="2" data-path="react-router/README.html">
             
                 
                     <a href="../react-router/README.html">
@@ -366,7 +366,7 @@
         </li>
     
         
-        <li class="chapter " data-level="3.2" data-path="reactjs_tutorial/reactjs_tutorial_part_2.html">
+        <li class="chapter active" data-level="3.2" data-path="reactjs_tutorial/reactjs_tutorial_part_2.html">
             
                 
                     <a href="../reactjs_tutorial/reactjs_tutorial_part_2.html">
@@ -491,15 +491,121 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_394">
+                    <section class="normal" id="section-gitbook_412">
                     
-                        <h1 id="react-router">React-Router学习笔记与项目结构解析</h1>
-<h2 id="routerrun"><code>Router.run</code></h2>
-<h2 id="routes">路由规则：<code>routes</code></h2>
-<h2 id="">主组件和主页面</h2>
-<h2 id="">子组件的组合与交互</h2>
-<h2 id="userapimock-user">userApi与mock-user数据</h2>
-<h2 id="assert">Assert组件</h2>
+                        <h1 id="reactjs-tutorial-part-2">React.js Tutorial Part 2</h1>
+<p>原文地址：<a href="http://www.joshfinnie.com/blog/reactjs-tutorial-part-2/" target="_blank">http://www.joshfinnie.com/blog/reactjs-tutorial-part-2/</a></p>
+<p>Welcome to part 2 of my tutorial on how to get a website up and running using <a href="http://facebook.github.io/react/" target="_blank">React.js</a> and <a href="http://nodejs.org/" target="_blank">Node.js</a>. You can read Part 1 <a href="http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/" target="_blank">here</a> if you haven&#39;t already.</p>
+<p>欢迎来到如何使用<a href="http://facebook.github.io/react/" target="_blank">React.js</a>搭建网站教程的第二部分不，如果你还没有阅读第一部分，<a href="http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/" target="_blank">戳这里</a>。</p>
+<p>In this part of the tutorial, we are going to make our React.js/Express.js app more like a full-fledged web application with the addition of a build system called <a href="http://gulpjs.com/" target="_blank">Gulp.js</a>. Gulp.js is a build system (or task runner) that I have been using for a while. There are <a href="http://gruntjs.com/" target="_blank">many</a>, <a href="https://github.com/broccolijs/broccoli" target="_blank">many</a>, <a href="http://webpack.github.io/" target="_blank">many</a> out there, but I find Gulp.js to be very sufficient for my needs.</p>
+<p>这一部分，我们将使用额外的<a href="http://gulpjs.com/" target="_blank">Gulp.js</a>构建工具，搭建一个更加完善的React.js/Express.js应用。Gulp.js是一个我一直在使用的构建工具（任务管理），这里有很多类似的<a href="http://gruntjs.com/" target="_blank">gruntjs</a>, <a href="https://github.com/broccolijs/broccoli" target="_blank">broccoli</a>, <a href="http://webpack.github.io/" target="_blank">webpack</a>等工具，但是最终发现Gulp.js最符合需求。</p>
+<h2 id="installing-gulp">Installing Gulp</h2>
+<p>Installing Gulp is very similar as to how we installed Express in the last tutorial, we need to add the <code>--save-dev</code> flag to save gulp to our <code>devDependencies</code> portion of the <code>package.json</code> file. Run:</p>
+<p>安装Gulp非常简单，就像上个教程中安装Express一样。使用<code>--save-dev</code>标记将gulp保存到<code>package.json</code>文件的<code>devDependencies</code>部分，运行：</p>
+<pre><code class="lang-bash">$ npm install --save-dev gulp
+</code></pre>
+<p>Now with Gulp installed, we can create our basic <code>gulpfile.js</code> file:</p>
+<p>Gulp安装好之后，我们建立一个<code>gulpfile.js</code>文件：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+
+gulp.task(<span class="hljs-string">'default'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-comment">// place code for your default task here</span>
+});
+</code></pre>
+<p>Now we need to install the Gulp packages that we will need to build our application. To start, let&#39;s install <a href="https://www.npmjs.com/package/browserify" target="_blank">browserify</a>, <a href="https://www.npmjs.com/package/reactify" target="_blank">reactify</a> and <a href="https://www.npmjs.com/package/vinyl-source-stream" target="_blank">vinyl-source-stream</a>. To install these packages, run the following command:</p>
+<p>现在需要为我们的应用安装Gulp包，开始之前，让我们添加<a href="https://www.npmjs.com/package/browserify" target="_blank">browserify</a>，<a href="https://www.npmjs.com/package/reactify" target="_blank">reactify</a>和<a href="https://www.npmjs.com/package/vinyl-source-stream" target="_blank">vinyl-source-stream</a>。运行：</p>
+<pre><code class="lang-bash">$ npm install --save-dev react browserify reactify vinyl-source-stream
+</code></pre>
+<p>At this point, we can remove <code>react-tools</code> from our <code>devDependencies</code> since we no longer need to build our <code>.jsx</code> files via the command line. Your <code>devDependencies</code> should look like this:</p>
+<p>在这时，我们可以从<code>devDependencies</code>中删除<code>react-tools</code>，因为我们不再需要通过命令行手动编译<code>.jsx</code>文件了。</p>
+<pre><code class="lang-json">&quot;devDependencies&quot;: {
+    &quot;browserify&quot;: &quot;^8.1.3&quot;,
+    &quot;gulp&quot;: &quot;^3.8.10&quot;,
+    &quot;react&quot;: &quot;^0.12.2&quot;,
+    &quot;reactify&quot;: &quot;^1.0.0&quot;,
+    &quot;vinyl-source-stream&quot;: &quot;^1.0.0&quot;
+}
+</code></pre>
+<h3 id="setting-up-gulp">Setting up Gulp</h3>
+<p>The next step is to set up Gulp to automatically build our <code>.jsx</code> files into usable javascript. To do this, we are going to create a Gulp task. A Gulp task is a function that will stream a bunch of steps transforming our <code>.jsx</code> to javascript. We will need to modify our <code>gulpfile.js</code> to look like this:</p>
+<p>下一步就是编写Gulp任务来将<code>.jsx</code>文件自动编译成可用的JavaScript文件。一个Gulp任务就是一个函数，包含编译文件的一系列步骤。我们需要修改<code>gulpfile.js</code>：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+
+<span class="hljs-keyword">var</span> browserify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browserify'</span>);
+<span class="hljs-keyword">var</span> reactify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'reactify'</span>);
+<span class="hljs-keyword">var</span> source = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vinyl-source-stream'</span>);
+
+gulp.task(<span class="hljs-string">'js'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    browserify(<span class="hljs-string">'./public/javascripts/src/app.jsx'</span>)
+        .transform(reactify)
+        .bundle()
+        .pipe(source(<span class="hljs-string">'app.js'</span>))
+        .pipe(gulp.dest(<span class="hljs-string">'public/javascripts/build/'</span>));
+});
+
+gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'js'</span>]);
+</code></pre>
+<p>Now running <code>gulp</code> from the command line will trigger the build of our React app; however, there are some things we need to do to our react app first!</p>
+<p>现在从命令行中运行<code>gulp</code>就会自动编译我们的React应用。但是，还有一些事情需要做！</p>
+<h3 id="browserifying-react">Browserifying React</h3>
+<p>There are some things we need to do to our application before browserify will work. Last tutorial we wrote a <code>helloworld.jsx</code>, now we need to modify this slightly to work with browserify. If you don&#39;t know browserify is a tool for compiling node-flavored commonjs modules for the browser. So let&#39;s modify our React code to work with browserify.</p>
+<p>在browserify可以工作之前需要做一些事情，在上一节中编写了<code>helloworld.jsx</code>，现在我们需要稍微修改一下。browserify是一个工具，可以将node模块编译成浏览器可执行的commonjs模块。</p>
+<p>First, we need to create an &quot;entry point&quot; for browersify, we can do this by simply creating an <code>app.jsx</code> file:</p>
+<p>首先，我们需要为browersify创建一个入口，建立一个<code>app.jsx</code>文件就可以了：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
+<span class="hljs-keyword">var</span> HelloWorld = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./HelloWorld.jsx'</span>);
+
+React.render(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">HelloWorld</span> /&gt;</span>,
+    document.getElementById('example')
+);</span>
+</code></pre>
+<p>This file is taking our <code>HelloWorld</code> component and rendering it in the div with id &quot;example&quot;. This code is taken from our original <code>helloworld.jsx</code> file from last tutorial. Instead of doing everything in that file, we are now requiring a module <code>HelloWorld</code> and rendering it in <code>app.jsx</code>. The reason for this is that as our application gets more complex, we have more control of how our files are broken out.</p>
+<p>这个文件就是一个<code>HelloWorld</code>组件，可以被渲染到<code>id=&quot;example&quot;</code>的div标签中，这份代码是直接从上一个教程的<code>helloworld.jsx</code>文章拿到的。但现在不是在一个文件中做所有事情，而是将<code>HelloWorld</code>模块渲染到<code>app.jsx</code>中。</p>
+<p>The next thing is that we have is modify our existing <code>helloworld.jsx</code> file to be a React component named <code>HelloWorld.jsx</code>. This is easily done and our <code>HelloWorld.jsx</code> file now looks like this:</p>
+<p>下一件事是已有的<code>helloworld.jsx</code>文件修改成React组件，<code>HelloWorld.jsx</code>：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
+
+<span class="hljs-built_in">module</span>.exports = React.createClass({
+render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello, world from a React.js Component!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    )
+}
+});</span>
+</code></pre>
+<p>Notice that the <code>HelloWorld.jsx</code> and <code>app.jsx</code> files are combined to be very similar to how the &#39;helloworld.jsx&#39; looked. Again, the reason for breaking our app into these two files are for future modules to be added.</p>
+<p>注意到<code>HelloWorld.jsx</code>和<code>app.jsx</code>文件组合在一起，看起来很像单独的&#39;helloworld.jsx&#39;文件。原因是为了将我们的应用拆分成不同的模块，以便于未来的可扩展性。</p>
+<p>Now, running <code>gulp</code> will create a javascript file in <code>public/javascripts/build/</code> called <code>app.js</code> and it will have everything we need to run our React app. Let&#39;s add this to our <code>layout.jade</code> file instead of the <code>react.min.js</code> and <code>helloworld.js</code> files:</p>
+<p>现在运行<code>gulp</code>会在<code>public/javascripts/build/</code>目录中新建名为<code>app.js</code>的标准JavaScript文件，我们需要它来运行React应用。让我们添加到<code>layout.jade</code>，替换之前的<code>react.min.js</code>和<code>helloworld.js</code>文件：</p>
+<pre><code>doctype html
+html
+head
+    title= title
+    link(rel=&#39;stylesheet&#39;, href=&#39;/stylesheets/style.css&#39;)
+body
+    block content
+    script(src=&#39;/javascripts/build/app.js&#39;)
+</code></pre><p>There you have it, a React application being built with Gulp using browersify!</p>
+<p>现在就有了一个使用Gulp自动构建browersify的React应用啦！</p>
+<p><img src="http://www.joshfinnie.com/assets/images/blog/hello-react-component.png" alt=""></p>
+<h3 id="gulp-watch">Gulp Watch</h3>
+<p>To make Gulp even better, let&#39;s implement the built-in <code>watch</code> functionality to have gulp watch for changes in our <code>.jsx</code> files and automatically build our javascript. To do this, we want to add the following task to our <code>gulpfile.js</code>:</p>
+<p>为了更好得使用Gulp，我们可以实现一个内建的<code>watch</code>功能，能够自动监测和编译<code>.jsx</code>文件。添加任务：</p>
+<pre><code class="lang-js">gulp.task(<span class="hljs-string">'watch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    gulp.watch(<span class="hljs-string">"public/javascripts/src/**/*.jsx"</span>, [<span class="hljs-string">"js"</span>])
+})
+</code></pre>
+<p>Also add that task to your default Gulp task:</p>
+<p>同时将<code>watch</code>任务添加到默认任务中：</p>
+<pre><code class="lang-js">gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'js'</span>, <span class="hljs-string">'watch'</span>]);
+</code></pre>
+<p>Now when we run <code>gulp</code> it will watch for changes in our <code>.jsx</code> and rebuild our javascript with that change! Awesome!</p>
+<p>现在我们可以运行<code>gulp</code>来自动监控<code>.jsx</code>的变化，并且自动重新编译成标准的JavaScript，Awesome！</p>
+<h3 id="next-time">Next Time</h3>
+<p>Next time we will continue to use Gulp to build out some more niceties when building a web application, introduce <a href="http://bower.io/" target="_blank">Bower</a>, and finally get to building some of the React Components we will use in our job board.</p>
+<p>下一次我们将继续使用Gulp来构建开发web应用时的其他细节，介绍<a href="http://bower.io/" target="_blank">Bower</a>，最终为我们的工作布告栏应用的编写React组件。</p>
+<p><em>{ meta: { tags: [ <a href="http://www.joshfinnie.com/tag/tutorial/" target="_blank">tutorial</a>, <a href="http://www.joshfinnie.com/tag/reactjs/" target="_blank">react.js</a>, <a href="http://www.joshfinnie.com/tag/javascript/" target="_blank">javascript</a>, <a href="http://www.joshfinnie.com/tag/nodejs/" target="_blank">node.js</a>, <a href="http://www.joshfinnie.com/tag/expressjs/" target="_blank">express.js</a> ], post_date: 2015-02-04 } }</em></p>
 
                     
                     </section>
@@ -510,10 +616,10 @@
         </div>
 
         
-        <a href="../reactjs/event.html" class="navigation navigation-prev " aria-label="Previous page: 事件与表单：event"><i class="fa fa-angle-left"></i></a>
+        <a href="../reactjs_tutorial/reactjs_tutorial_part_1.html" class="navigation navigation-prev " aria-label="Previous page: React.js Tutorial Part 1"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../react-router/routerrun.html" class="navigation navigation-next " aria-label="Next page: Router.run"><i class="fa fa-angle-right"></i></a>
+        <a href="../reactjs_tutorial/reactjs_tutorial_part_interlude.html" class="navigation navigation-next " aria-label="Next page: React.js Tutorial Part (Interlude)"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
