@@ -18,7 +18,8 @@
    * [userApi与mock-user数据](react-router/userapimock-user.md)
    * [Assert组件](react-router/assert.md)
 * [React.js Tutorial（翻译）](reactjs_tutorial/README.md)
-   * [React.js Tutorial Part 1](reactjs_tutorial/reactjs_tutorial_part_1.md)
-   * [React.js Tutorial Part 2](reactjs_tutorial/reactjs_tutorial_part_2.md)
-   * [React.js Tutorial Part (Interlude)](reactjs_tutorial/reactjs_tutorial_part_interlude.md)
+   * [React.js Tutorial Part 1: Hello World](reactjs_tutorial/reactjs_tutorial_part_1.md)
+   * [React.js Tutorial Part 2: Gulp Task](reactjs_tutorial/reactjs_tutorial_part_2.md)
+   * [React.js Tutorial Part (Interlude): Bower Package](reactjs_tutorial/reactjs_tutorial_part_interlude.md)
+   * [React.js Tutorial Part 3: Real Component](reactjs_tutorial/reactjs_tutorial_part_3.md)
 
