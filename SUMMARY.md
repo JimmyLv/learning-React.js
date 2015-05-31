@@ -17,4 +17,6 @@
    * [子组件的组合：interaction](react-router/interaction.md)
    * [userApi与mock-user数据](react-router/userapimock-user.md)
    * [Assert组件](react-router/assert.md)
+* [React.js Tutorial（翻译）](reactjs_tutorial/README.md)
+   * [React.js Tutorial Part 1](reactjs_tutorial/reactjs_tutorial_part_1.md)
 
