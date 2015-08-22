@@ -22,4 +22,5 @@
    * [React.js Tutorial Part 2: Gulp Task](reactjs_tutorial/reactjs_tutorial_part_2.md)
    * [React.js Tutorial Part (Interlude): Bower Package](reactjs_tutorial/reactjs_tutorial_part_interlude.md)
    * [React.js Tutorial Part 3: Real Component](reactjs_tutorial/reactjs_tutorial_part_3.md)
+   * [React.js Tutorial Part (Interlude 2)](reactjs_tutorial/reactjs_tutorial_part_interlude_2.md)
 
