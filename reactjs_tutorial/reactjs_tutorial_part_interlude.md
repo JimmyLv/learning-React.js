@@ -46,28 +46,27 @@ After completing the prompts your `bower.json` file should look something like t
 
 将`bower.json`设置如下：
 
-```json
     {
-  "name": "jobs.nodedc.com",
-  "version": "0.1.0",
-  "homepage": "https://github.com/joshfinnie/jobs.nodedc.com",
-  "authors": [
-    "Josh Finnie "
-  ],
-  "description": "A job board for the NodeDC meetup group.",
-  "main": "./bin/www",
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "public/lib/",
-    "test",
-    "tests"
-  ]
-}
-```
+      "name": "jobs.nodedc.com",
+      "version": "0.1.0",
+      "homepage": "https://github.com/joshfinnie/jobs.nodedc.com",
+      "authors": [
+        "Josh Finnie "
+      ],
+      "description": "A job board for the NodeDC meetup group.",
+      "main": "./bin/www",
+      "license": "MIT",
+      "private": true,
+      "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "public/lib/",
+        "test",
+        "tests"
+      ]
+    }
+
 
 ## Twitter Bootstrap and SASS Setup
 
@@ -75,17 +74,14 @@ The next bit of setup we are going to do for our web app is to install [Twitter 
 
 下一步就是为我们的web应用安装[Twitter Bootstrap](http://getbootstrap.com/)，并且选用官方的[SASS](http://sass-lang.com/)版本的Bower包。可以使用`bower search`来搜索哪些包是可用的，搜索`bootstrap`可以得到很多包，当然包括我们想要的。这是一些搜索的片段：
 
-```shell
-$ bower search bootstrap
-Search results:
-
-    bootstrap git://github.com/twbs/bootstrap.git
-    angular-bootstrap git://github.com/angular-ui/bootstrap-bower.git
-    bootstrap-sass-official git://github.com/twbs/bootstrap-sass.git
-    sass-bootstrap git://github.com/jlong/sass-bootstrap.git
-    bootstrap-datepicker git://github.com/eternicode/bootstrap-datepicker.git
-    bootstrap-select git://github.com/silviomoreto/bootstrap-select.git
-```
+    $ bower search bootstrap
+    Search results:
+        bootstrap git://github.com/twbs/bootstrap.git
+        angular-bootstrap git://github.com/angular-ui/bootstrap-bower.git
+        bootstrap-sass-official git://github.com/twbs/bootstrap-sass.git
+        sass-bootstrap git://github.com/jlong/sass-bootstrap.git
+        bootstrap-datepicker git://github.com/eternicode/bootstrap-datepicker.git
+        bootstrap-select git://github.com/silviomoreto/bootstrap-select.git
 
 From here we want to install the `bootstrap-sass-official` package by running the following command:
 
@@ -212,6 +208,8 @@ body
 ```
 
 This then makes our web application this:
+
+完成之后的效果：
 
 ![](http://www.joshfinnie.com/assets/images/blog/bootstrapped-hello-react.png)
 
