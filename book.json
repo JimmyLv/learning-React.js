@@ -5,14 +5,7 @@
     ],
     "pluginsConfig": {
         "disqus": {
-            "plugins": [
-                "disqus"
-            ],
-            "pluginsConfig": {
-                "disqus": {
-                    "shortName": "learningreactjs"
-                }
-            }
+            "shortName": "learningreactjs"
         },
         "autocover": {
             "title": "Learning React.js",
